@@ -1,0 +1,29 @@
+h2{
+    color: blueviolet;
+}
+
+h2{
+    color: green;
+}
+
+.same{
+    color: red;
+}
+
+input[placeholder="Fname"]::placeholder{
+    color: red;
+}
+
+
+/* *{
+    border: 2px solid black;
+} */
+
+/* decendent combinator */
+#container strong{
+    background-color: red;
+}
+
+p strong{
+    background-color: blue;
+}

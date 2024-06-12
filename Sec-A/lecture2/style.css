@@ -1,0 +1,16 @@
+
+h2{
+    color: green;
+}
+
+h2{
+    color: purple;
+}
+
+#head3{
+    color:blueviolet;
+}
+
+input[placeholder="firstname"]{
+    background-color: aquamarine;
+}

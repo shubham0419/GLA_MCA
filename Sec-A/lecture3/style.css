@@ -1,0 +1,50 @@
+
+
+/* "decendent " */
+/* body p{
+    color:red;
+} */
+
+/* child */
+body > p{
+    color: blue;
+}
+
+/* adjacent sibling */
+a+p{
+    color: green;
+}
+
+/* subsequent sibling */
+ol~p{
+    color: peru;
+}
+
+/* psedo selector */
+
+#container strong:hover{
+    background-color: black;
+}
+
+#container strong:active{
+    background-color: white;
+}
+
+#container input:focus{
+    background-color:aqua;
+}
+
+/* psudo element selector */
+
+div>p:nth-of-type(5){
+    color: aqua;
+}
+
+div>p:nth-of-type(even){
+    color: red;
+}
+
+#nth>p:nth-of-type(3n+1){
+    color: mediumspringgreen;
+}
+
