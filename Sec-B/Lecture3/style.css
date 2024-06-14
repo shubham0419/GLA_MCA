@@ -24,6 +24,7 @@ input[placeholder="Fname"]::placeholder{
     background-color: red;
 }
 
-p strong{
+/* p strong{
     background-color: blue;
-}
+} */
+

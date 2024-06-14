@@ -1,0 +1,56 @@
+
+/* div{
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+
+div:hover{
+    background-color: red;
+}
+
+div:active{
+    background-color: black;
+}
+
+input:focus{
+    background-color: aqua;
+} */
+
+/* nth of type */
+
+div>p{
+    border: 2px solid black;
+
+}
+
+div>p:nth-of-type(5){
+    background-color: aqua;
+}
+
+div>p:nth-of-type(even){
+    background-color: plum;
+}
+
+div>p:nth-of-type(5n+3){
+    background-color: red;
+}
+
+/* before and after */
+
+h1::after{
+    content: " h1";
+    color: red;
+}
+
+h1::before{
+    content: "This is ";
+    color: blueviolet;
+}
+
+h1{
+    border: 2px solid red;
+    display: inline-block;
+    border-radius: 10px;
+}
+
