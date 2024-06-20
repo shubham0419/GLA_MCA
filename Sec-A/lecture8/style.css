@@ -1,0 +1,76 @@
+:root {
+  --rem: 12;
+}
+/* #container{
+  background-color: rgb(241, 207, 244);
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 10px 5px;
+}
+
+#container>div{
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+}
+
+#container>div:nth-of-type(1){
+  grid-column-start: 2;
+  grid-column-end: 4;
+  background-color: RED;
+} */
+
+#container{
+  width: 50%;
+  border: 2px solid black;
+}
+
+#container>div{
+  width: 50%;
+  height: 100px;
+  border: 2px solid black;
+  font-size: 5rem;
+}
+
+/* Navbar */
+
+header{
+  position: fixed;
+  width: 100%;
+}
+
+nav{
+  padding: 0 100px;
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul{
+  display: flex;
+  gap: 50px;
+}
+
+nav ul>li{
+  list-style: none;
+}
+
+nav ul>li>a{
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+@media screen and (max-width :820px){
+  nav{
+    background-color: red ;
+    flex-direction: column;
+  }
+  nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  
+}

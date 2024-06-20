@@ -12,7 +12,3 @@ div:hover{
   transform: rotate(90deg);
 } */
 
-div{
-  display: grid;
-  grid-template-columns: minmax(2);
-}
