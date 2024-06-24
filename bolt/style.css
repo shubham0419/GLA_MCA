@@ -1,0 +1,62 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+h2{
+  font-family: "Work Sans", sans-serif;
+}
+h3{
+  font-family: "Raleway", sans-serif;
+}
+
+h3:hover{
+color: #33856b;
+}
+/* ---- Css of Navbar Start -----*/
+
+.navbar {
+  display: flex !important;
+  position: relative;
+  justify-content: space-between;
+  padding-top: 20px;
+
+}
+.navbar .logo img {
+  width: 150px;
+  position: relative;
+  z-index: 30;
+}
+
+/* ---- Css of Navbar End -----*/
+
+/* ----Nav Sidebar Css Start ----*/
+.btn_one i {
+  color: black;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 60px; 
+  transition: all 0.3s linear;
+
+}
+.btn_one label{
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
