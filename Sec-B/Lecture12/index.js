@@ -76,3 +76,14 @@ const filteredArr = arr.filter((ele)=>{
 })
 
 console.log(filteredArr);
+
+
+const quesn = ["user 1 gla","user 2 ","user 3 ","user 4 gla",
+  "user 5 gla","user 6 ","user 7 gla","user 8",];
+
+
+const ansArr = quesn.filter((user)=>{
+  return !user.includes("gla");
+})
+
+console.log(ansArr);
