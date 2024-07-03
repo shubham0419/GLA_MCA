@@ -44,7 +44,7 @@ const mapArr = arr.map((ele)=>{
 })
 
 const square = arr.map((ele)=>{
-  return ele-2;
+  return ele*2;
 })
 
 console.log("orignal",arr);
