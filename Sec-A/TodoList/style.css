@@ -1,0 +1,17 @@
+#container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo{
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+.cross{
+  cursor: pointer;
+  color: red;
+}

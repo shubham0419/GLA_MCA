@@ -1,0 +1,14 @@
+#mid{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#mid div{
+  display: flex;
+  flex-direction: column;
+}
+
+#mid div>img{
+  width: 50px;
+}
