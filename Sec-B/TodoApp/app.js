@@ -11,3 +11,15 @@ form.addEventListener("submit", (e) => {
     e.target.children[0].value = "";
   }
 });
+
+container.addEventListener("click",(e)=>{
+  if(e.target.id==="cross"){
+    e.target.parentElement.remove();
+  }else{
+    e.target.classList.toggle("cut");
+  }
+})
+
+localStorage.setItem("todo","hiiiiiiiiiiiiiiiiiiiii");
+
+console.log(localStorage.getItem("todo"));
