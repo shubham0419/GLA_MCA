@@ -12,3 +12,9 @@
 #mid div>img{
   width: 50px;
 }
+
+.mid{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}

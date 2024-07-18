@@ -9,11 +9,12 @@ h1{
   display: flex;
   gap: 5px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 #todo{
   display: flex;
+  width: 50%;
   justify-content: space-between;
   border: 1px solid gray;
   padding: 10px;
