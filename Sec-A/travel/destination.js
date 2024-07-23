@@ -92,13 +92,13 @@ const destinations = [
 ];
 
 
-const select  = document.getElementById("destination");
+const destinationSelect = document.getElementById("destination");
 
-const addOptions = ()=>{
-  for(let i=0;i<destinations.length;i++){
-    let option = `<option value="${destinations[i].name}">${destinations[i].name}</option>`;
-    // console.log(select);
-    select.innerHTML += option;
+const addDestinationOptions = ()=>{
+  for(let destination of destinations){
+    const option = `<option value="${destination.name}">${destination.name}</option>`;
+    destinationSelect.insertAdjacentHTML("beforeend", option);
   }
 }
-addOptions();
+
+addDestinationOptions();

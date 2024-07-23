@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Organizer</title>
+    <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJyDSqTrVeYVDhIPtu4rQ7yKRkkOmEmKU&callback=console.debug&libraries=maps,marker&v=beta">
+    </script> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#schedules">Schedules</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                </ul>
+                <div id="mobile-menu" class="material-icons">menu</div>
+            </nav>
+            <button id="dark-mode-toggle">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Landing Section -->
+        <section class="hero" id="home">
+            <div class="hero-video">
+                <video autoplay loop muted>
+                    <source src="images/scenery.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="hero-text">
+                <h1>Welcome to the Trip Organizer</h1>
+                <p>Plan your perfect trip with ease. Discover destinations, manage schedules, and more.</p>
+                <a href="#schedules" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <div id="map"></div>
+
+        <!-- Schedules Section -->
+        <section class="schedules" id="schedules">
+            <h2>Your Travel Schedules</h2>
+            
+            <form id="new-schedule-form">
+                <!-- <select type="text" id="destination" placeholder="Destination" required> -->
+                <label for="destination">Select Destination</label>
+                <select name="destination" id="destination">
+                    <option value="none">Select</option>
+                </select>
+                
+                <div id="hotel-selector"></div>
+
+                <div id='hotelContainer'></div>
+                <input name="date" type="date" id="dateAdd" required>
+                <button type="submit">Add Schedule</button>
+            </form>
+            <div id="schedule-items">
+
+            </div>
+        </section>
+
+        <!-- Day-by-Day Schedules Section -->
+        <section class="day-by-day" id="day-by-day">
+            <h2>Day-by-Day Schedules</h2>
+            <form id="new-day-schedule-form">
+                <input type="number" id="day" placeholder="Day Number" min="1" required>
+                <input type="text" id="day-destination" placeholder="Destination" required>
+                <input type="date" id="day-date" required>
+                <textarea id="day-info" placeholder="Additional Information"></textarea>
+                <button type="submit">Add Day Schedule</button>
+            </form>
+            <div id="day-schedules"></div>
+        </section>
+
+        <!-- Destinations Section -->
+        <section class="destinations" id="destinations">
+            <h2>Top Destinations</h2>
+            <div class="destination-cards">
+                <div class="destination-card">
+                    <img src="images/destination1.jpg" alt="Destination 1">
+                    <div class="destination-info">
+                        <h3>Paris</h3>
+                        <p>Explore the city of lights, with its iconic landmarks and romantic streets.</p>
+                        <a href="destination-detail.html" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="images/destination2.jpg" alt="Destination 2">
+                    <div class="destination-info">
+                        <h3>New York</h3>
+                        <p>Experience the hustle and bustle of the Big Apple, from Broadway to Central Park.</p>
+                        <a href="destination-detail.html" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                <!-- Add more destination cards as needed -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Trip Organizer. All rights reserved.</p>
+    </footer>
+
+    <!-- Google Maps API -->
+    <script src="destination.js"></script>
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg", v: "weekly"});</script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script> -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -51,11 +51,16 @@
         <!-- Schedules Section -->
         <section class="schedules" id="schedules">
             <h2>Your Travel Schedules</h2>
+            
             <form id="new-schedule-form">
                 <!-- <select type="text" id="destination" placeholder="Destination" required> -->
                 <label for="destination">Select Destination</label>
                 <select name="destination" id="destination">
+                    <option value="none">Select</option>
                 </select>
+                
+                <div id="hotel-selector"></div>
+
                 <div id='hotelContainer'></div>
                 <input name="date" type="date" id="dateAdd" required>
                 <button type="submit">Add Schedule</button>
