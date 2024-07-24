@@ -11,6 +11,10 @@ document.getElementById("mobile-menu").addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
+const userDestinations = [];
+
+const storedDestinations = localStorage.getItem("savedDestinations");
+
 destinationSelect.addEventListener("change", (e) => {
   const selectedDestination = e.target.value;
   if (selectedDestination) {
@@ -23,10 +27,10 @@ destinationSelect.addEventListener("change", (e) => {
     // todo - give styling to select by classList.add
     hotelSelect.id = "hotel-select";
     hotelSelect.name = "hotelSelect";
-    for(let hotel of hotels){
-        const option = `<option value="${hotel.name}">${hotel.name}</option>`;
-        hotelSelect.insertAdjacentHTML("beforeend", option);
-      }
+    for (let hotel of hotels) {
+      const option = `<option value="${hotel.name}">${hotel.name}</option>`;
+      hotelSelect.insertAdjacentHTML("beforeend", option);
+    }
     console.log(hotelSelect);
     const label = `<label for="hotel-select">Select hotel : </label>`;
     hotelSelector.innerHTML = "";
@@ -38,43 +42,53 @@ destinationSelect.addEventListener("change", (e) => {
 const destinationForm = document.getElementById("new-schedule-form");
 const scheduleItems = document.getElementById("schedule-items");
 
-destinationForm.addEventListener("submit",(e)=>{
+destinationForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const {destination,date,hotelSelect} = e.target;
+  const { destination, date, hotelSelect } = e.target;
 
-  const div = document.createElement("div");
+    const div = document.createElement("div");
 
-  const foundDestination = destinations.find(
-    (singleDestination) => singleDestination.name == destination.value
-  );
+    const foundDestination = destinations.find(
+      (singleDestination) => singleDestination.name == destination.value
+    );
 
-  const image = document.createElement("img");
-  image.src = foundDestination.Image[0];
-  image.alt = foundDestination.name;
-  
-  const name = `<h3>${foundDestination.name}</h3>`;
-  const hotel = `<h4>Selected hotel : ${hotelSelect.value}</h4>`
-  const dateEle = `<p>Bookig date : ${date.value}</p>`;
-  const info = `<p>${foundDestination.information}</p>`
-  div.classList.add("schedule-item");
+  if (foundDestination) {
+    userDestinations.push({
+      name:foundDestination.name,
+      hotel:hotelSelect.value,
+      date:date.value
+    });
 
-  const divInside = document.createElement("div");
-  divInside.style.display = "flex"
-  divInside.style.gap = "10px"
+    localStorage.setItem("savedDestinations",JSON.stringify(userDestinations))
 
-  divInside.append(image);
-  
-  const divInsideInside = document.createElement("div");
-  divInsideInside.innerHTML += name;
-  divInsideInside.innerHTML += hotel;
-  divInsideInside.innerHTML += dateEle;
+    const image = document.createElement("img");
+    image.src = foundDestination.Image[0];
+    image.alt = foundDestination.name;
 
-  divInside.append(divInsideInside);
+    const name = `<h3>${foundDestination.name}</h3>`;
+    const hotel = `<h4>Selected hotel : ${hotelSelect.value}</h4>`;
+    const dateEle = `<p>Bookig date : ${date.value}</p>`;
+    const info = `<p>${foundDestination.information}</p>`;
+    div.classList.add("schedule-item");
 
-  div.append(divInside)
-  div.innerHTML += info;
-  scheduleItems.prepend(div);
-})
+    const divInside = document.createElement("div");
+    divInside.style.display = "flex";
+    divInside.style.gap = "10px";
 
+    divInside.append(image);
 
+    const divInsideInside = document.createElement("div");
+    divInsideInside.innerHTML += name;
+    divInsideInside.innerHTML += hotel;
+    divInsideInside.innerHTML += dateEle;
+
+    divInside.append(divInsideInside);
+
+    div.append(divInside);
+    div.innerHTML += info;
+    scheduleItems.prepend(div);
+  }else{
+    alert("Please select a destination");
+  }
+});
