@@ -178,9 +178,10 @@ gmp-map {
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
+  /* display: flex; */
   gap: 15px;
 }
+
 
 .schedule-item img, .day-schedule-item img {
   width: 30%;
