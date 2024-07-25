@@ -12,8 +12,51 @@ document.getElementById("mobile-menu").addEventListener("click", () => {
 });
 
 const userDestinations = [];
+const destinationForm = document.getElementById("new-schedule-form");
+const scheduleItems = document.getElementById("schedule-items");
 
-const storedDestinations = localStorage.getItem("savedDestinations");
+const storedDestinations = JSON.parse(localStorage.getItem("savedDestinations"));
+
+const localStorageFun = () => {
+  console.log(storedDestinations);
+  if (storedDestinations) {
+    console.log(storedDestinations);
+    storedDestinations.forEach((destination) => {
+      const div = document.createElement("div");
+
+      const image = document.createElement("img");
+      image.src = destination.image;
+      image.alt = destination.name;
+
+      const name = `<h3>${destination.name}</h3>`;
+      const hotel = `<h4>Selected hotel : ${destination.hotel}</h4>`;
+      const dateEle = `<p>Bookig date : ${destination.date}</p>`;
+      const info = `<p>${destination.info}</p>`;
+      const deleteBtn = `<button id="delete">Delete</button>`;
+      div.classList.add("schedule-item");
+
+      const containerOfImageInfo = document.createElement("div");
+      containerOfImageInfo.style.display = "flex";
+      containerOfImageInfo.style.gap = "10px";
+
+      containerOfImageInfo.append(image);
+
+      const ContainerOfInformation = document.createElement("div");
+      ContainerOfInformation.innerHTML += name;
+      ContainerOfInformation.innerHTML += hotel;
+      ContainerOfInformation.innerHTML += dateEle;
+      ContainerOfInformation.innerHTML += deleteBtn;
+
+      containerOfImageInfo.append(ContainerOfInformation);
+
+      div.append(containerOfImageInfo);
+      div.innerHTML += info;
+      scheduleItems.prepend(div);
+    });
+  }
+};
+
+localStorageFun();
 
 destinationSelect.addEventListener("change", (e) => {
   const selectedDestination = e.target.value;
@@ -39,28 +82,29 @@ destinationSelect.addEventListener("change", (e) => {
   }
 });
 
-const destinationForm = document.getElementById("new-schedule-form");
-const scheduleItems = document.getElementById("schedule-items");
 
+// Add destination
 destinationForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const { destination, date, hotelSelect } = e.target;
 
-    const div = document.createElement("div");
-
-    const foundDestination = destinations.find(
-      (singleDestination) => singleDestination.name == destination.value
-    );
+  const foundDestination = destinations.find(
+    (singleDestination) => singleDestination.name == destination.value
+  );
 
   if (foundDestination) {
     userDestinations.push({
-      name:foundDestination.name,
-      hotel:hotelSelect.value,
-      date:date.value
+      name: foundDestination.name,
+      hotel: hotelSelect.value,
+      date: date.value,
+      info: foundDestination.information,
+      image: foundDestination.Image[0],
     });
 
-    localStorage.setItem("savedDestinations",JSON.stringify(userDestinations))
+    localStorage.setItem("savedDestinations", JSON.stringify(userDestinations));
+
+    const div = document.createElement("div");
 
     const image = document.createElement("img");
     image.src = foundDestination.Image[0];
@@ -70,25 +114,40 @@ destinationForm.addEventListener("submit", (e) => {
     const hotel = `<h4>Selected hotel : ${hotelSelect.value}</h4>`;
     const dateEle = `<p>Bookig date : ${date.value}</p>`;
     const info = `<p>${foundDestination.information}</p>`;
+    const deleteBtn = `<button id="delete">Delete</button>`;
     div.classList.add("schedule-item");
 
-    const divInside = document.createElement("div");
-    divInside.style.display = "flex";
-    divInside.style.gap = "10px";
+    const containerOfImageInfo = document.createElement("div");
+    containerOfImageInfo.style.display = "flex";
+    containerOfImageInfo.style.gap = "10px";
 
-    divInside.append(image);
+    containerOfImageInfo.append(image);
 
-    const divInsideInside = document.createElement("div");
-    divInsideInside.innerHTML += name;
-    divInsideInside.innerHTML += hotel;
-    divInsideInside.innerHTML += dateEle;
+    const ContainerOfInformation = document.createElement("div");
+    ContainerOfInformation.innerHTML += name;
+    ContainerOfInformation.innerHTML += hotel;
+    ContainerOfInformation.innerHTML += dateEle;
+    ContainerOfInformation.innerHTML += deleteBtn;
 
-    divInside.append(divInsideInside);
+    containerOfImageInfo.append(ContainerOfInformation);
 
-    div.append(divInside);
+    div.append(containerOfImageInfo);
     div.innerHTML += info;
     scheduleItems.prepend(div);
-  }else{
+  } else {
     alert("Please select a destination");
+  }
+});
+
+// delete
+scheduleItems.addEventListener("click", (e) => {
+  if (e.target.id == "delete") {
+    const destination = e.target;
+    const foundDestionation = destination.parentElement.parentElement.parentElement;
+    const updatedDestinations = userDestinations.filter((destination)=>{
+      return destination.name !== foundDestionation.children[0].innerText;
+    })
+    foundDestionation.remove();
+    localStorage.setItem("savedDestinations", JSON.stringify(updatedDestinations));
   }
 });

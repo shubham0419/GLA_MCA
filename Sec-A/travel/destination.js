@@ -2,7 +2,7 @@ const destinations = [
   {
     name: "Taj Mahal, Agra",
     Image: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Taj-Mahal.jpg/800px-Taj-Mahal.jpg",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Taj_Mahal_2012.jpg/800px-Taj_Mahal_2012.jpg"
     ],
     information: "The Taj Mahal, located in Agra, is a magnificent white marble mausoleum built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal. It is a UNESCO World Heritage Site and one of the Seven Wonders of the World.",

@@ -20,6 +20,15 @@ header {
   z-index: 1000;
 }
 
+/* popover */
+#popover{
+  position: fixed;
+  background: transparent;
+  z-index: 50;
+  top:20%;
+  left:20%;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -184,8 +193,16 @@ gmp-map {
 
 .schedule-item img, .day-schedule-item img {
   width: 30%;
-  height: auto;
   border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.schedule-item #delete{
+  background-color: red;
+  padding: 5px 15px;
+  border: 1px solid rgb(140, 0, 0);
+  border-radius: 5px;
+  color: white;
 }
 
 .schedule-item h4, .day-schedule-item h4 {
